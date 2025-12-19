@@ -1,0 +1,139 @@
+body {
+    color: #000;
+    font-family: 'Oxygen', sans-serif;
+}
+
+header.navbar {
+    border: 0;
+    border-radius: 0;
+    background-color: #ed1313;
+}
+
+/* navbar-brand color uses default / inherited styles */
+
+h2 {
+    margin-top: 20px;
+}
+
+section {
+    border: 1px solid #000;
+    margin-top: 7%;
+    margin-bottom: 3%;
+    padding: 20px; /* fixed padding */
+    background-color: rgba(234, 55, 55, 0.892);
+}
+
+/* Center all text inside sections */
+section,
+section * {
+    text-align: center;
+}
+
+/* Mobile navbar: make collapsed menu full-width and distinct background */
+@media (max-width: 767px) {
+    .navbar .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        background-color: #000;
+        z-index: 9999;
+        padding: 0;
+    }
+
+    .navbar-collapse .navbar-nav {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-collapse .navbar-nav .nav-item,
+    .navbar-collapse .navbar-nav .nav-link {
+        display: block;
+        width: 100%;
+        color: #fff !important;
+        padding: 15px 0;
+    }
+}
+
+/* For extra-small screens (<576px) remove horizontal spacing so sections span edge-to-edge */
+@media (max-width: 575.98px) {
+    /* add a small gutter so content doesn't stick to the viewport edge */
+    .container {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    /* remove Bootstrap row/column gutters so content reaches container edges */
+    .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .row > [class*="col-"] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    section {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        min-height: 500px; /* slightly reduced for small screens */
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+    }
+
+    /* keep heading centered but remove extra top margin to fit small screens */
+    h2 {
+        margin-top: 10px;
+    }
+}
+
+/* Add horizontal gap between the two half-width sections (Chicken & Beef) */
+@media (min-width: 768px) {
+    .row {
+        gap: 30px; /* use flex gap for spacing */
+    }
+
+    .row > section.col-md-6 {
+        flex: 0 0 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+
+    .row > section.col-md-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Laptop / large screens: show three equal columns (4/4/4) with proper gaps */
+@media (min-width: 992px) {
+    .row {
+        gap: 30px;
+    }
+
+    .row > section.col-lg-4 {
+        flex: 0 0 calc(33.333% - 20px);
+        max-width: calc(33.333% - 20px);
+    }
+
+    /* Ensure elements that also have col-md-6 use the lg sizing at this breakpoint */
+    .row > section.col-md-6.col-lg-4 {
+        flex: 0 0 calc(33.333% - 20px);
+        max-width: calc(33.333% - 20px);
+    }
+
+    .row > section.col-md-12.col-lg-4 {
+        flex: 0 0 calc(33.333% - 20px);
+        max-width: calc(33.333% - 20px);
+    }
+}
+
+/* Let Bootstrap control navbar expand/collapse behavior (no overrides here) */
